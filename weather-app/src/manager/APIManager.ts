@@ -18,6 +18,7 @@ export default class APIManager {
             console.log(error);
             return current;
         }
+        return current;
     }
 
     public getForecast = async () => {
@@ -31,5 +32,6 @@ export default class APIManager {
             console.log(error);
             return forecast;
         }
+        return forecast;
     }
 };

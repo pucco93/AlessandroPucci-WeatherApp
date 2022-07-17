@@ -5,9 +5,11 @@ import TopBar from "./TopBar/TopBar";
 import Body from "./Body/Body";
 import APIManager from "./manager/APIManager";
 import { Current, Day } from "./models/index";
+import LSManager from "./manager/LocalStorageManager";
 
 function App() {
   let apiManager: APIManager = new APIManager();
+  let lsManager: LSManager = new LSManager();
   const { colorMode, toggleColorMode } = useColorMode();
   const [currentWeather, updateCurrent] = useState<Current | null>(null);
   const [days, updateDays] = useState<Day[]>([]);
@@ -22,21 +24,27 @@ function App() {
   };
 
   const getLocalData = () => {
-    
+    let days: Day[] = lsManager.getForecast();
+    let current: Current | null = lsManager.getCurrent();
+    return {days: days, current: current};
   };
 
-  const getAPIData = async () => {};
+  const getAPIData = async () => {
+    let days: Day[] | null = await apiManager.getForecast();
+    let current: Current | null = await apiManager.getCurrent();
+    return {days: days, current: current};
+  };
 
   const _getData = async () => {
-/*     let dataFromLocalStorage = getLocalData();
+    let dataFromLocalStorage = getLocalData();
     let currentData = await getAPIData();
     if(currentData) {
       updateDays(currentData.days);
-      updateForecast(currentData.forecast);
+      updateCurrent(currentData.current);
     } else {
       updateDays(dataFromLocalStorage.days);
-      updateForecast(dataFromLocalStorage.forecast);
-    } */
+      updateCurrent(dataFromLocalStorage.current);
+    }
   };
 
   const _removeSavedData = () => {
@@ -45,8 +53,7 @@ function App() {
 
   useEffect(() => {
     // get weather
-    /* apiManager.getForecast();
-    apiManager.getCurrent(); */
+    _getData();
   }, []);
 
   return (

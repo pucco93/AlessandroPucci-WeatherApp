@@ -23,3 +23,12 @@ export const initialDay: Day = {
     day: "",
     forecasts: []  
 };
+
+/**
+ * LocalStorage variable names
+ * They are meant to be recognizable
+ * LS stands for LocalStorage,
+ * AP stands for Alessandro Pucci
+ */
+export const LSCurrent: string = "LSAPWeatherCurrent";
+export const LSForecast: string = "LSAPWeatherForecast";
