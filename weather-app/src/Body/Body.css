@@ -1,0 +1,266 @@
+.body {
+    background: linear-gradient(90deg, hsla(183, 62%, 45%, 1) 0%, hsla(41, 96%, 58%, 1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 536px;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--chakra-colors-white);
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.now {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: var(--chakra-colors-white);
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.firstRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.tempContainer {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.minmaxContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.nowCurrentTemperature {
+    font-size: 60px;
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.nowMaxTemperature {
+    font-size: 22px;
+    background-color: var(--chakra-colors-red-600);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.temperatureSeparator {
+    height: 1px;
+    margin: 5px auto;
+    width: calc(100% - 5px);
+    background-color: var(--chakra-colors-grey-400);
+}
+
+.nowMinTemperature {
+    font-size: 22px;
+    background-color: var(--chakra-colors-blue-600);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.nowWeatherIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-weight: 700;
+}
+
+.secondRow {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.nowDescription {
+    
+}
+
+.humidity {
+    
+}
+
+.nowLabel {
+    
+}
+
+.hoursContainer {
+    display: flex;
+    margin: 10px 0px;
+    max-width: calc(86px * 6);
+    overflow-x: auto;
+}
+
+.hourContainer {
+    padding: 10px 20px 15px 20px;
+    border-radius: 10px;
+    background-color: var(--chakra-colors-white);
+    margin: 0px 7.5px 15px 10px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.hourContainer:first-child {
+    margin: 0px 7.5px 15px 0px;
+}
+
+.temperature {
+    margin-bottom: 10px;
+}
+
+.weatherIcon {
+    font-size: 36px;
+}
+
+.hourLabel {
+    margin-top: 10px;
+}
+
+.latestUpdateDate {
+    font-size: 11px;
+    text-align: right;
+}
+
+.lowerSection {
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: var(--chakra-colors-white);
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    margin-bottom: 50px;
+}
+
+.cardsContainer {
+    display: flex;
+    align-items: center;
+    width: 516px;
+    overflow-x: auto;
+    margin: 10px;
+    padding-bottom: 10px;
+    transition: all 300ms;
+}
+
+.cardContainer {
+    width: 140px;
+    flex-shrink: 0;
+    padding: 10px;
+    margin: 10px 7.5px;
+    border-radius: 10px;
+    background-color: var(--chakra-colors-white);
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.day {
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.forecastDescription {
+    font-size: 14px;
+}
+
+.forecastIcon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.temperatureContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.forecastTemperature {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.verticalLine {
+    height: 20px;
+    width: 1px;
+    margin: 0px 4px;
+    background-color: var(--chakra-colors-grey-400);
+}
+
+.forecastMaxTemp {
+    background: var(--chakra-colors-red-600);
+    padding: 3px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+}
+
+.forecastMinTemp {
+    background-color: var(--chakra-colors-blue-600);
+    padding: 3px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+}
+
+.noItemsContainer {
+    height: calc(100vh - 45px);
+}
+
+.showError {
+    padding: 10px 20px;
+    margin: 100px auto;
+    border-radius: 10px;
+    background-color: var(--chakra-colors-white);
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.daysContainer {
+    display: flex;
+    width: 516px;
+    margin: 10px;
+    justify-content: space-between;
+}
+
+.dayButton {
+    width: calc((100% / 5) - 10px);
+}
+
+@media only screen and (min-width: 757px) {
+    .cardsContainer {
+        flex-wrap: wrap;
+    }
+
+    .cardContainer {
+        width: calc(100% - 15px);
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        box-shadow: 0px -4px 15px -3px rgba(0,0,0,0.1);
+    }
+
+    .forecastDescription {
+        margin-top: 10px;
+    }
+
+    .forecastIcon {
+        font-size: 50px;
+        align-self: center;
+    }
+
+    .forecastTemperature {
+        width: auto;
+        font-size: 25px;
+        font-weight: 600;
+        margin-right: 10px
+    }
+}

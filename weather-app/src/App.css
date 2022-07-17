@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.App {
+  text-align: center;
+}
+
+.topBar {
+  height: 45px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--chakra-colors-whiteAlpha-400);
+}
+
+.leftSection {
+
+}
+
+.appTitle {
+  font-size: 25px;
+  padding-left: 30px;
+}
+
+.rightSection {
+
+}
+
+.themeIcon {
+  transition: all 400ms;
+  margin-right: 25px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.reloadIcon {
+  transition: all 400ms;
+  margin-right: 15px;
+}
+
+.deleteIcon {
+  transition: all 400ms;
+  margin-right: 15px;
+}
