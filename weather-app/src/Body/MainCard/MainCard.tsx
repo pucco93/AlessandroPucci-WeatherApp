@@ -1,47 +1,69 @@
-import { SunIcon } from "@chakra-ui/icons";
 import { Box, useColorModeValue } from "@chakra-ui/react";
-import HourItem from "./HourItem";
+import { Current } from "../../models";
+import { Skeleton, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
 
-export interface IMainCardProps {}
+export interface IMainCardProps {
+  currentWeather: Current | null;
+  isLoading: boolean;
+}
 
 const MainCard = (props: IMainCardProps) => {
-  const hours = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
-    12,
-  ];
-  const bg = useColorModeValue('white', '#525252');
-  const bgSeparator = useColorModeValue('grey', 'white');
+  const bg = useColorModeValue("white", "#525252");
+  const bgSeparator = useColorModeValue("grey", "white");
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  } as const;
 
   return (
     <Box className="container" bg={bg}>
       <Box className="now" bg={bg}>
         <div className="firstRow">
-          <div className="tempContainer">
-            <p className="nowCurrentTemperature">23°</p>
-            <div className="minmaxContainer">
-              <p className="nowMaxTemperature">27°</p>
-              <Box bg={bgSeparator} className="temperatureSeparator"></Box>
-              <p className="nowMinTemperature">19°</p>
+          <Skeleton isLoaded={!props.isLoading}>
+            <div className="tempContainer">
+              <p className="nowCurrentTemperature">
+                {props.currentWeather?.mediumTemperature}°
+              </p>
+              <div className="minmaxContainer">
+                <p className="nowMaxTemperature">
+                  {props.currentWeather?.maxTemperature}°
+                </p>
+                <Box bg={bgSeparator} className="temperatureSeparator"></Box>
+                <p className="nowMinTemperature">
+                  {props.currentWeather?.minTemperature}°
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="nowWeatherIcon">
-            <SunIcon />
-          </div>
+          </Skeleton>
+          <Skeleton isLoaded={!props.isLoading}>
+            <div className="nowWeatherIcon">
+              <Box
+                width={100}
+                height={100}
+                transform={"scale(1.3)"}
+                bgImage={props.currentWeather?.icon}
+              />
+            </div>
+          </Skeleton>
         </div>
-        <div className="secondRow">
-          <p className="nowDescription">
-            Today in Lodon: thunderstorm with heavy drizzle
-          </p>
-          <p className="humidity">Humidity: 70%</p>
-          {/* <p className="nowLabel">Now</p> */}
-        </div>
+        <Skeleton isLoaded={!props.isLoading}>
+          <div className="secondRow">
+            <p className="nowDescription">
+              Today in Lodon: {props.currentWeather?.description}
+            </p>
+            <p className="humidity">
+              Humidity: {props.currentWeather?.humidity}%
+            </p>
+          </div>
+        </Skeleton>
       </Box>
-      {/* <div className="hoursContainer">
-        {hours.map((item, index) => (
-          <HourItem key={index} />
-        ))}
-      </div> */}
-      <p className="latestUpdateDate">Last update: 16:52 09/07/2022</p>
+      <p className="latestUpdateDate">
+        Last update:{" "}
+        {typeof(props.currentWeather?.lastUpdate) === "string" ? new Date(props.currentWeather?.lastUpdate)?.toLocaleDateString("en-gb", options) : props.currentWeather?.lastUpdate?.toLocaleDateString("en-gb", options)}
+      </p>
     </Box>
   );
 };

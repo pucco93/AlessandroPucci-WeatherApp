@@ -1,5 +1,5 @@
 import { LSCurrent, LSForecast } from "../constants/Constants";
-import { Current, Forecast } from "../models";
+import { Current, Day, Forecast } from "../models";
 
 export default class LSManager {
     constructor() {
@@ -18,11 +18,23 @@ export default class LSManager {
         return [];
     }
 
-    public setCurrent = (current: Current) => {
-        localStorage.setItem(LSCurrent, JSON.stringify(current));
+    public setCurrent = (current: Current | null) => {
+        if(current) {
+            localStorage.setItem(LSCurrent, JSON.stringify(current));
+        }
     }
 
-    public setForecast = (forecast: Forecast) => {
-        localStorage.setItem(LSForecast, JSON.stringify(forecast));
+    public setForecast = (forecast: Day[]) => {
+        if(forecast) {
+            localStorage.setItem(LSForecast, JSON.stringify(forecast));
+        }
+    }
+
+    public deleteCurrent = () => {
+        localStorage.removeItem(LSCurrent);
+    }
+
+    public deleteForecast = () => {
+        localStorage.removeItem(LSForecast);
     }
 }

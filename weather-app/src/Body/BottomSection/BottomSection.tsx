@@ -1,33 +1,34 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Box, useColorModeValue, IconButton } from "@chakra-ui/react";
+import { Box, useColorModeValue } from "@chakra-ui/react";
 import Card from "./Card";
 import Day from "./Day";
+import * as Model from '../../models/index';
 
 export interface IBottomSectionProps {
-  selectedDay: number;
-  setDay: (newDay: number) => void;
+  selectedDay: Model.Day | null;
+  setDay: (newDay: Model.Day) => void;
+  days: Model.Day[];
+  isLoading: boolean;
 }
 
 const BottomSection = (props: IBottomSectionProps) => {
-  const forecastHours: string[] = ["00:00", "03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00"];
-  const days: number[] = [1, 2, 3, 4, 5];
   const bg = useColorModeValue("white", "#525252");
 
   return (
     <Box bg={bg} className="lowerSection">
       <div className="daysContainer">
-        {days.map((day, index) => (
+        {props.days.map((day, index) => (
           <Day
             day={day}
             key={index}
             selectedDay={props.selectedDay}
             setDay={props.setDay}
+            isLoading={props.isLoading}
           />
         ))}
       </div>
-      <div className="cardsContainer" style={{maxHeight: props.selectedDay !== 0 ? 1200 : 0, paddingBottom: props.selectedDay !== 0 ? 10 : 0}}>
-        {forecastHours.map((hour, index) => (
-          <Card hour={hour} key={index} />
+      <div className="cardsContainer" style={{maxHeight: props.selectedDay !== null ? 1200 : 0, paddingBottom: props.selectedDay !== null ? 10 : 0}}>
+        {props.selectedDay?.forecasts.map((forecast, index) => (
+          <Card forecast={forecast} key={index} />
         ))}
       </div>
     </Box>

@@ -1,17 +1,19 @@
-import { Button, useColorModeValue } from "@chakra-ui/react";
+import { Button, Skeleton, useColorModeValue } from "@chakra-ui/react";
+import * as Model from '../../models/index';
 
 export interface IDayProps {
-  day: number;
-  selectedDay: number;
-  setDay: (newDay: number) => void;
+  day: Model.Day;
+  selectedDay: Model.Day | null;
+  setDay: (newDay: Model.Day) => void;
+  isLoading: boolean;
 }
 
 const Day = (props: IDayProps) => {
   const bg = useColorModeValue("white", "#525252");
-  // const bgHover = useColorModeValue("#ffffff", "#525252");
   const color = useColorModeValue("#525252", "white");
 
   return (
+    <Skeleton isLoaded={!props.isLoading} className="daySkeleton">
     <Button
       bg={bg}
       textColor={color}
@@ -21,8 +23,9 @@ const Day = (props: IDayProps) => {
       variant={props.selectedDay === props.day ? "disabled" : "outline"}
       onClick={() => props.setDay(props.day)}
     >
-      {props.day}
+      {props.day?.day}
     </Button>
+    </Skeleton>
   );
 };
 
