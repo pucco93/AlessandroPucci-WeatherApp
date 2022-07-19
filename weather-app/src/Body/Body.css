@@ -4,10 +4,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
 }
 
 .container {
-    width: 536px;
+    width: 620px;
     margin-top: 50px;
     padding: 10px;
     border-radius: 10px;
@@ -146,7 +147,7 @@
 .cardsContainer {
     display: flex;
     align-items: center;
-    width: 516px;
+    width: 600px;
     overflow-x: auto;
     margin: 10px;
     padding-bottom: 10px;
@@ -228,7 +229,7 @@
 
 .daysContainer {
     display: flex;
-    width: 516px;
+    width: 600px;
     margin: 10px;
     justify-content: space-between;
 }
@@ -267,5 +268,70 @@
         font-size: 25px;
         font-weight: 600;
         margin-right: 10px
+    }
+}
+
+
+@media only screen and (max-width: 425px) {
+    .body {
+        height: auto !important;
+    }
+
+    .container {
+        width: 90%;
+        padding: 3%;
+        margin-top: 20px;
+    }
+
+    .now {
+        padding: 0;
+    }
+
+    .tempContainer {
+        margin-right: 20px;
+    }
+
+    .nowCurrentTemperature {
+        font-size: 28px;
+        margin-right: 10px;
+    }
+
+    .nowMaxTemperature {
+        font-size: 14px;
+    }
+
+    .nowMinTemperature {
+        font-size: 14px;
+    }
+
+    .nowWeatherIcon > div {
+        transform: unset;
+    }
+
+    .secondRow {
+        padding-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .lowerSection {
+        width: 90%;
+    }
+
+    .daysContainer {
+        width: 90%;
+        overflow-x: auto;
+    }
+
+    .daysContainer > div {
+        width: auto !important;
+        margin-right: 10px;
+    }
+
+    .daysContainer > div:last-child {
+        margin-right: 0px;
+    }
+
+    .cardsContainer {
+        width: 90%;
     }
 }

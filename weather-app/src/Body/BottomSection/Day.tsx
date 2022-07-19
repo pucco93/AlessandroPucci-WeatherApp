@@ -3,6 +3,7 @@ import * as Model from '../../models/index';
 
 export interface IDayProps {
   day: Model.Day;
+  daysNumber: number;
   selectedDay: Model.Day | null;
   setDay: (newDay: Model.Day) => void;
   isLoading: boolean;
@@ -13,7 +14,7 @@ const Day = (props: IDayProps) => {
   const color = useColorModeValue("#525252", "white");
 
   return (
-    <Skeleton isLoaded={!props.isLoading} className="daySkeleton">
+    <Skeleton isLoaded={!props.isLoading} className="daySkeleton" style={{width: `calc((100% / ${props.daysNumber}) - 10px)`}}>
     <Button
       bg={bg}
       textColor={color}

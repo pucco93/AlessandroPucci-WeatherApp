@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import { extendTheme, useBoolean, useColorMode } from "@chakra-ui/react";
+import { useBoolean, useColorMode } from "@chakra-ui/react";
 import TopBar from "./TopBar/TopBar";
 import Body from "./Body/Body";
 import APIManager from "./manager/APIManager";

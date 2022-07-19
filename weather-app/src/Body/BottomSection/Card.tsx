@@ -10,6 +10,11 @@ const Card = (props: ICardProps) => {
   const bg = useColorModeValue("white", "#525252");
   const bgSeparator = useColorModeValue("grey", "white");
   let [mediaQuery] = useMediaQuery("(max-width: 768px)");
+  let lowerResStyle = {
+    width: "100%",
+    backgroundRepeat: "no-repeat"
+  };
+
   let hours: string =
     new Date(props.forecast.datetime).getUTCHours() < 10
       ? `0${new Date(props.forecast.datetime).getUTCHours()}`
@@ -54,6 +59,7 @@ const Card = (props: ICardProps) => {
       <Box
         width={120}
         height={120}
+        style={lowerResStyle}
         bgImage={props.forecast?.icon}
         bgPos="center"
       />
@@ -62,7 +68,6 @@ const Card = (props: ICardProps) => {
         <div className="forecastTemperature">
           {props.forecast.mediumTemperature}°
         </div>
-        {/* <div className="verticalLine"/> */}
         <div className="forecastMaxTemp">{props.forecast.maxTemperature}°</div>
         <Box bg={bgSeparator} className="verticalLine" />
         <div className="forecastMinTemp">{props.forecast.minTemperature}°</div>
