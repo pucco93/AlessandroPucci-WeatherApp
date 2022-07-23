@@ -25,7 +25,7 @@ export const mapForecast = (promise: any) => {
         tempForecasts.push({
             day: new Date(datetime).getUTCDate(),
             datetime: datetime,
-            icon: `${IconUrl}${item.weather[0]?.icon}`,
+            icon: `${IconUrl}${item.weather[0]?.icon}${IconExtension}`,
             description: item.weather[0]?.description,
             mediumTemperature: fromKelvinToCelsius(item?.main?.temp),
             maxTemperature: fromKelvinToCelsius(item?.main?.temp_max),
@@ -50,7 +50,7 @@ export const mapForecast = (promise: any) => {
             };
             return currentForecast;
         }
-        if(prevForecast.day === currentForecast.day) {
+        if(prevForecast.day === currentForecast.day && index !== tempForecasts.length - 1) {
             day.forecasts.push({
                 day: currentForecast.day,
                 datetime: currentForecast.datetime,
@@ -75,6 +75,21 @@ export const mapForecast = (promise: any) => {
                     description: currentForecast.description
                 }]
             };
+            return currentForecast;
+        } else if(prevForecast.day === currentForecast.day && index === tempForecasts.length - 1) {
+            day = {
+                day: `${currentForecast.day} ${getWeekDay(new Date(currentForecast.datetime))}`,
+                forecasts: [...day.forecasts, {
+                    day: currentForecast.day,
+                    datetime: currentForecast.datetime,
+                    mediumTemperature: currentForecast.mediumTemperature,
+                    maxTemperature: currentForecast.maxTemperature,
+                    minTemperature: currentForecast.minTemperature,
+                    icon: currentForecast.icon,
+                    description: currentForecast.description
+                }]
+            };
+            days.push(day);
             return currentForecast;
         }
         return currentForecast;
