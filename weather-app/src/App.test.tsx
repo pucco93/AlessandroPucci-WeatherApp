@@ -4,6 +4,7 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { LSCurrent } from "./constants/Constants";
 import * as models from "./models";
 import Day from "./Body/BottomSection/Day";
+import Card from "./Body/BottomSection/Card";
 
 // Check if pressing changing theme, it changes it for real
 test("check changing theme", () => {
@@ -35,7 +36,7 @@ test("cleaning localStorage", () => {
     minTemperature: "",
     maxTemperature: "",
     humidity: 0,
-    lastUpdate: new Date()
+    lastUpdate: new Date(),
   };
   localStorage.setItem(LSCurrent, JSON.stringify(mockItem));
 
@@ -89,27 +90,111 @@ test("get data", async () => {
   const items: models.Day[] = [
     {
       day: "1 Monday",
-      forecasts: []
+      forecasts: [],
     },
     {
       day: "2 Tuesday",
-      forecasts: []
+      forecasts: [],
     },
     {
       day: "3 Wednesday",
-      forecasts: []
+      forecasts: [],
     },
     {
       day: "4 Thursday",
-      forecasts: []
+      forecasts: [],
     },
     {
       day: "5 Friday",
-      forecasts: []
-    }
+      forecasts: [],
+    },
   ];
 
-  items.forEach((item) => render(<Day day={item} daysNumber={items.length} selectedDay={null} setDay={() => {}} isLoading={false} />));
-  const dayButton =  document.querySelector("button[class*='dayButton']");
+  items.forEach((item) =>
+    render(
+      <Day
+        day={item}
+        daysNumber={items.length}
+        selectedDay={null}
+        setDay={() => {}}
+        isLoading={false}
+      />
+    )
+  );
+  const dayButton = document.querySelector("button[class*='dayButton']");
   expect(dayButton).toBeVisible();
 });
+/* 
+test("get cards", async () => {
+  const items: models.Forecast[] = [
+    {
+      datetime: 1658587649965,
+      day: 1,
+      icon: "",
+      description: "Thunderstorm with heavy rain, I hope.",
+      mediumTemperature: "30°",
+      minTemperature: "24°",
+      maxTemperature: "33°",
+    },
+    {
+      datetime: 1658587649965,
+      day: 2,
+      icon: "",
+      description: "Thunderstorm with heavy rain, I hope.",
+      mediumTemperature: "30°",
+      minTemperature: "24°",
+      maxTemperature: "33°",
+    },
+    {
+      datetime: 1658587649965,
+      day: 3,
+      icon: "",
+      description: "Thunderstorm with heavy rain, I hope.",
+      mediumTemperature: "30°",
+      minTemperature: "24°",
+      maxTemperature: "33°",
+    },
+    {
+      datetime: 1658587649965,
+      day: 4,
+      icon: "",
+      description: "Thunderstorm with heavy rain, I hope.",
+      mediumTemperature: "30°",
+      minTemperature: "24°",
+      maxTemperature: "33°",
+    },
+    {
+      datetime: 1658587649965,
+      day: 5,
+      icon: "",
+      description: "Thunderstorm with heavy rain, I hope.",
+      mediumTemperature: "30°",
+      minTemperature: "24°",
+      maxTemperature: "33°",
+    },
+    {
+      datetime: 1658587649965,
+      day: 6,
+      icon: "",
+      description: "Thunderstorm with heavy rain, I hope.",
+      mediumTemperature: "30°",
+      minTemperature: "24°",
+      maxTemperature: "33°",
+    },
+    {
+      datetime: 1658587649965,
+      day: 7,
+      icon: "",
+      description: "Thunderstorm with heavy rain, I hope.",
+      mediumTemperature: "30°",
+      minTemperature: "24°",
+      maxTemperature: "33°",
+    },
+  ];
+
+  items.forEach((forecast, index) =>
+    render(<Card forecast={forecast} key={index} />)
+  );
+  const hourCard = screen.getByTestId("hour-card");
+  expect(hourCard).toBeVisible();
+}); */

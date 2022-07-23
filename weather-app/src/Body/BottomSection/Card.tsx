@@ -1,4 +1,3 @@
-import { SunIcon } from "@chakra-ui/icons";
 import { Box, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 import { Forecast } from "../../models";
 
@@ -25,7 +24,7 @@ const Card = (props: ICardProps) => {
       : `${new Date(props.forecast.datetime).getUTCMinutes()}`;
 
   let desktopView = (
-    <Box bg={bg} className="cardContainer">
+    <Box bg={bg} className="cardContainer" data-testid="hour-card" >
       <div className="day">{hours + ":" + minutes}</div>
       <div className="firstRow">
         <div className="temperatureContainer">
@@ -54,7 +53,7 @@ const Card = (props: ICardProps) => {
   );
 
   let mobileView = (
-    <Box bg={bg} className="cardContainer">
+    <Box bg={bg} className="cardContainer" data-testid="hour-card" >
       <div className="day">{hours + ":" + minutes}</div>
       <Box
         width={120}

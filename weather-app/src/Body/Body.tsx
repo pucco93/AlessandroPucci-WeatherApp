@@ -21,19 +21,22 @@ const Body = (props: IBodyProps) => {
         height: props.selectedDay === null ? "calc(100vh - 45px)" : "auto",
       }}
     >
-      {/* {props.currentWeather === null && props.days.length === 0 ? (
+      {props.currentWeather === null && props.days.length === 0 ? (
         <NoForecastFound />
       ) : (
-      <> */}
-      <MainCard currentWeather={props.currentWeather} isLoading={props.isLoading} />
-      <BottomSection
-        selectedDay={props.selectedDay}
-        days={props.days}
-        setDay={props.setDay}
-        isLoading={props.isLoading}
-      />
-      {/*   </>
-      )} */}
+        <>
+          <MainCard
+            currentWeather={props.currentWeather}
+            isLoading={props.isLoading}
+          />
+          <BottomSection
+            selectedDay={props.selectedDay}
+            days={props.days}
+            setDay={props.setDay}
+            isLoading={props.isLoading}
+          />
+        </>
+      )}
     </div>
   );
 };
