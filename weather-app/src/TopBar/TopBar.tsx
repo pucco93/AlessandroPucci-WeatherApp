@@ -19,6 +19,7 @@ const TopBar = (props: ITopBarProps) => {
           <IconButton
             aria-label="Remove saved data"
             className="deleteIcon"
+            data-testid="delete"
             icon={<DeleteIcon />}
             onClick={props.removeLocalStorage}
           />
@@ -27,6 +28,7 @@ const TopBar = (props: ITopBarProps) => {
           <IconButton
             aria-label="Reload page"
             className="reloadIcon"
+            data-testid="refresh"
             icon={<RepeatIcon />}
             onClick={props.reloadWeather}
           />
